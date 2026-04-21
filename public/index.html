@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uma Pergunta Importante 💌</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700;900&family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Corações flutuantes de fundo -->
+  <div id="hearts-bg"></div>
+
+  <!-- ══════════════ TELA DA PERGUNTA ══════════════ -->
+  <div class="screen" id="screen-ask">
+    <div class="card">
+      <span class="bear-emoji">🐻‍❄️</span>
+      <h1>Aceita <span>namorar</span><br>comigo?</h1>
+      <p class="sub">Pensa bem antes de responder... 😏</p>
+    </div>
+
+    <div class="btn-group" id="btn-group">
+      <button class="btn btn-yes" id="btn-yes">❤️ SIM!</button>
+      <button class="btn btn-no"  id="btn-no">😭 NÃO</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ TELA DO SIM ══════════════ -->
+  <div class="screen hidden" id="screen-yes">
+    <div class="confetti-container" id="confetti-container"></div>
+    <div class="yes-card">
+      <div class="hearts-row">
+        <span>💖</span><span>💕</span><span>💗</span>
+      </div>
+      <h2 class="yes-title">MUITO <span>BEM MENINA!!</span> 🎉</h2>
+      <p class="yes-sub">
+        ESCOLHEU CERTO MANO! 🥹<br>
+        Agora somos oficialmente <strong>namoraditos</strong>.<br>
+        Te prometo muitos beijos maneiros! ✨
+      </p>
+      <span class="fireworks-emoji">🎊</span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

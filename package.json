@@ -1,0 +1,12 @@
+{
+  "name": "aceita-namorar",
+  "version": "1.0.0",
+  "description": "A pergunta mais importante da vida 💌",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

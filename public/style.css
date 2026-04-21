@@ -1,0 +1,234 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pink:     #ff6b9d;
+  --rose:     #ff3d7f;
+  --lavender: #c084fc;
+  --cream:    #fff5f8;
+  --dark:     #3d1a2e;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  min-height: 100vh;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* ─── CORAÇÕES DE FUNDO ─── */
+#hearts-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+}
+.bg-heart {
+  position: absolute;
+  font-size: 1.4rem;
+  opacity: 0.18;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0.18; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* ─── TELAS ─── */
+.screen {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 10;
+  transition: opacity .6s ease, transform .6s ease;
+}
+.screen.hidden { opacity: 0; pointer-events: none; transform: scale(.94); }
+
+/* ─── TELA DA PERGUNTA ─── */
+#screen-ask { gap: 2.4rem; }
+
+.card {
+  background: white;
+  border-radius: 2.4rem;
+  padding: 3rem 3.6rem 2.6rem;
+  box-shadow: 0 20px 60px rgba(255,61,127,.18), 0 4px 16px rgba(255,61,127,.10);
+  text-align: center;
+  max-width: 420px;
+  width: 90vw;
+  position: relative;
+  z-index: 2;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 2.6rem;
+  background: linear-gradient(135deg, var(--pink), var(--lavender), var(--rose));
+  z-index: -1;
+}
+
+.bear-emoji {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: .6rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: .5rem;
+}
+h1 span { color: var(--rose); }
+
+.sub {
+  font-size: .95rem;
+  color: #a07090;
+  margin-bottom: 1.4rem;
+}
+
+/* ─── BOTÕES ─── */
+.btn-group {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 20;
+}
+
+.btn {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: .85rem 2.4rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  letter-spacing: .03em;
+  user-select: none;
+}
+.btn:active { transform: scale(.96) !important; }
+
+.btn-yes {
+  background: linear-gradient(135deg, var(--pink), var(--rose));
+  color: white;
+  box-shadow: 0 8px 24px rgba(255,61,127,.4);
+}
+.btn-yes:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 32px rgba(255,61,127,.5);
+}
+
+.btn-no {
+  background: white;
+  color: #c06080;
+  border: 2px solid #f0b0c8;
+  box-shadow: 0 4px 14px rgba(200,80,120,.12);
+  transition: none; /* sem transição para fuga instantânea */
+}
+.btn-no.escaping {
+  position: fixed;
+}
+
+/* ─── TELA DO SIM ─── */
+#screen-yes { gap: 0; background: transparent; }
+
+.confetti-container {
+  position: fixed; inset: 0; pointer-events: none; z-index: 5;
+}
+.confetti-piece {
+  position: absolute;
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: .3; }
+}
+
+.yes-card {
+  background: white;
+  border-radius: 2.8rem;
+  padding: 3.2rem 3.6rem;
+  box-shadow: 0 24px 64px rgba(255,61,127,.22);
+  text-align: center;
+  max-width: 440px;
+  width: 90vw;
+  position: relative;
+  z-index: 10;
+  animation: popIn .7s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.6) rotate(-4deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.yes-card::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 3rem;
+  background: linear-gradient(135deg, var(--pink), var(--lavender), var(--rose));
+  z-index: -1;
+}
+
+.hearts-row {
+  font-size: 2.4rem;
+  display: flex;
+  justify-content: center;
+  gap: .3rem;
+  margin-bottom: .8rem;
+}
+.hearts-row span { animation: heartPop .5s cubic-bezier(.34,1.56,.64,1) both; }
+.hearts-row span:nth-child(1) { animation-delay: .2s; }
+.hearts-row span:nth-child(2) { animation-delay: .35s; }
+.hearts-row span:nth-child(3) { animation-delay: .5s; }
+@keyframes heartPop {
+  from { opacity: 0; transform: scale(0) rotate(-20deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.yes-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: var(--dark);
+  margin-bottom: .6rem;
+}
+.yes-title span { color: var(--rose); }
+
+.yes-sub {
+  font-size: 1.05rem;
+  color: #a07090;
+  line-height: 1.6;
+}
+
+.fireworks-emoji {
+  font-size: 4rem;
+  display: block;
+  margin-top: 1.2rem;
+  animation: spin 3s linear infinite;
+}
+@keyframes spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Corações flutuantes na tela do sim */
+.float-heart {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  z-index: 6;
+  animation: floatHeart 3.5s ease-in-out forwards;
+}
+@keyframes floatHeart {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-80vh) scale(1.5); }
+}
